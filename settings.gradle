@@ -1,0 +1,2 @@
+rootProject.name = 'ZedF9Logger'
+include ':app'
