@@ -1,6 +1,5 @@
 plugins {
     id 'com.android.application'
-    id 'kotlin-android'
 }
 
 android {
@@ -9,21 +8,19 @@ android {
 
     defaultConfig {
         applicationId "com.example.zedf9logger"
-        minSdk 26
+        minSdk 21
         targetSdk 34
         versionCode 1
         versionName "1.0"
-    }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-    kotlinOptions { jvmTarget = "17" }
 
     buildTypes {
         debug {
-            // debug build; will be signed with debug key by Android Studio
+            // Optionnel : génère un APK avec le suffixe -debug
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
         }
         release {
             minifyEnabled false
@@ -31,19 +28,23 @@ android {
         }
     }
 
-    externalNativeBuild {
-        // no native code in this simplified version
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
     }
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.0"
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
-    implementation 'com.squareup.okhttp3:okhttp:4.11.0'
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
 
-    // USB serial library
-    implementation 'com.github.mik3y:usb-serial-for-android:3.4.6'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.6'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
