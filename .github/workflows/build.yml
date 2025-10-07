@@ -24,19 +24,14 @@ jobs:
     - name: Setup Android SDK
       uses: android-actions/setup-android@v3
 
-    - name: Build Debug APK
-      run: ./gradlew assembleDebug
+    - name: Build Debug APK (module app)
+      run: ./gradlew :app:assembleDebug
 
-    - name: List all project files
-      run: |
-        echo "=== Listing build output folders ==="
-        find . -type d -name "outputs" || true
-        echo "=== Listing all .apk files ==="
-        find . -type f -name "*.apk" || true
+    - name: List output files
+      run: ls -R app/build/outputs || true
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
         name: APK
-        path: |
-          **/*.apk
+        path: app/build/outputs/**/*.apk
