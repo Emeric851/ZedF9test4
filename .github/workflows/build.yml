@@ -1,17 +1,3 @@
-- name: Download Android SDK
-  uses: android-actions/setup-android@v2
-  with:
-    api-level: 34
-    build-tools: 34.0.0
-par cette version corrigée :
-
-yaml
-Copier le code
-- name: Setup Android SDK
-  uses: android-actions/setup-android@v3
-✅ Voici ton workflow entièrement corrigé et compatible 2025
-yaml
-Copier le code
 name: Build APK
 
 on:
